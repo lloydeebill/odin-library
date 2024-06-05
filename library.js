@@ -19,6 +19,8 @@ function addBookToLibrary(title,author,pages,info) {
 
 }
 
+
+
 function displayBook() {
 
   //for each book, it will access each property//
@@ -60,11 +62,18 @@ function displayBook() {
 }
 
 
+const newBookButton = document.querySelector('.add-book-button');
 
-addBookToLibrary("Man's Search for Meaning","Victor Frankl",200,"Frankl's Man's Search for Meaning provides a vivid account of an individual's experience as a prisoner in a Nazi concentration camp. The book focuses on love, hope, responsibility, inner freedom, and the beauty to be found in both nature and art as means that help one endure and overcome harrowing experiences.");
+const bookformModal = document.querySelector('.book-form-modal');
 
 
-addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, "A novel about the serious issues of rape and racial inequality, 'To Kill a Mockingbird' is also renowned for its warmth and humor. The narrator's father, Atticus Finch, has served as a moral hero for many readers and as a model of integrity for lawyers.");
+newBookButton.addEventListener("click", () => {
+
+  bookformModal.style.display = 'block';
+
+  console.log('modal opened');
+})
+
 
 
 
