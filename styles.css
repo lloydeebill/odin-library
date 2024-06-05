@@ -66,8 +66,26 @@ h6 {
   background-color: green;
   grid-column: 1 / 2;
   grid-row: 1 / 3;
-
+  padding: 10px;
+  grid-template-rows: 1fr 6fr;
 }
+
+.dashboard-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+
+.add-book-button , .reset-shelf-button {
+  width: 150px;
+  height: 50px;
+  display: block;
+}
+
+
+
 
 .main {
   display: grid;
@@ -106,3 +124,5 @@ h6 {
 .book-info {
   font-size: 15px;
 }
+
+
