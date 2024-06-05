@@ -82,13 +82,28 @@ h6 {
 
 
 .book {
-
   height: 350px;
   background-color: white;
   border-radius: 10px;
   border-left: 10px solid rgba(13, 90, 61, 0.86);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 15px;
   
-  
-  
+}
+
+
+.book-title {
+  font-size: 20px;
+}
+
+.book-author {
+  font-size: 20px;
+}
+
+.books-pages {
+  font-size: 20px;
+}
+
+.book-info {
+  font-size: 15px;
 }
