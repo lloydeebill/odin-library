@@ -2,17 +2,18 @@
 
 const myLibrary = [];
 
-function Book(title,author,pages,info){
+function Book(title,author,pages,info,readStatus){
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.info = info;
+  this.readStatus = readStatus;
 }
 
 
-function addBookToLibrary(title,author,pages,info) {
+function addBookToLibrary(title,author,pages,info,readStatus) {
   
-  const newBook = new Book(title,author,pages,info);
+  const newBook = new Book(title,author,pages,info,readStatus);
   myLibrary.push(newBook);
 
   displayBook();
@@ -54,13 +55,25 @@ function displayBook() {
     bookInfo.innerText = `${book.info}`;
     bookInfo.classList.add('book-info');
     bookContainer.appendChild(bookInfo);
-    
 
-    bookShelf.appendChild(bookContainer);
+    const bookReadStatus = document.createElement('label');
+    bookReadStatus.innerText = `${book.readStatus}`;
+    bookReadStatus.classList.add('book-read-status');
+
 
   })
 }
 
+
+function toggleReadStatus() {
+  const statusOptions = ['to read','reading','finished'];
+  const currentIndex = statusOptions.indexOf(book.readStatus);
+  const nextIndex = (currentIndex + 1) % statusOptions.length;
+  book.readStatus = statusOptions[nextIndex];
+  label.innerText = book.readStatus;
+
+
+}
 
 const newBookButton = document.querySelector('.add-book-button');
 const bookformModal = document.querySelector('.book-form-modal');
@@ -87,8 +100,9 @@ form.addEventListener("submit",(event) => {
   const author = document.querySelector('#author').value;
   const pages = document.querySelector('#pages').value;
   const info = document.querySelector('#info').value;
+  const readStatus = document.querySelector('#read-status').value;
 
-  addBookToLibrary(title,author,pages,info);
+  addBookToLibrary(title,author,pages,info,readStatus);
 
   bookformModal.style.display = 'none';
 
