@@ -56,24 +56,30 @@ function displayBook() {
     bookInfo.classList.add('book-info');
     bookContainer.appendChild(bookInfo);
 
-    const bookReadStatus = document.createElement('label');
-    bookReadStatus.innerText = `${book.readStatus}`;
-    bookReadStatus.classList.add('book-read-status');
+    const readStatusSelect = document.createElement('select');
+    readStatusSelect.classList.add('read-status-select');
 
+    const statusOptions = ['To read','Reading','Finished'];
+    statusOptions.forEach((status) => {
+      const option = document.createElement('option');
+      option.innerText = `${status}`;
+      option.value = status;
+
+      if (status === book.readStatus) {
+        option.selected = true;
+      }
+
+      readStatusSelect.appendChild(option);
+
+    })
+
+    bookContainer.appendChild(readStatusSelect);
+    bookShelf.appendChild(bookContainer);
 
   })
 }
 
 
-function toggleReadStatus() {
-  const statusOptions = ['to read','reading','finished'];
-  const currentIndex = statusOptions.indexOf(book.readStatus);
-  const nextIndex = (currentIndex + 1) % statusOptions.length;
-  book.readStatus = statusOptions[nextIndex];
-  label.innerText = book.readStatus;
-
-
-}
 
 const newBookButton = document.querySelector('.add-book-button');
 const bookformModal = document.querySelector('.book-form-modal');
