@@ -63,15 +63,19 @@ function displayBook() {
 
 
 const newBookButton = document.querySelector('.add-book-button');
-
 const bookformModal = document.querySelector('.book-form-modal');
+const closeButton = document.querySelector('.close-button');
 
 
 newBookButton.addEventListener("click", () => {
 
   bookformModal.style.display = 'block';
+  
+});
 
-  console.log('modal opened');
+closeButton.addEventListener("click",() => {
+  
+
 })
 
 

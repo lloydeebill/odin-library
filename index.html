@@ -28,26 +28,24 @@
     </div>
 
 
-    <div class="form-modal">
-      <div class="form-content">
-        <span class="close-button">"&times;" </span>
-          <form action="" id="bookForm">
-            <label for="title"></label>
+    <div class="book-form-modal">
+      <div class="book-form-content">
+        <span class="close-button">&times; </span>
+          <form action="" id="bookForm" class="book-form">
+            <label for="title">Book Title:</label>
             <input type="text" name="title" id="title" required>
             
-            <label for="author"></label>
+            <label for="author">Author:</label>
             <input type="text" name="author" id="action" required>
             
-            <label for="pages"></label>
-            <input type="text" name="pages" id="pages" required>
+            <label for="pages">Pages:</label>
+            <input type="number" name="pages" id="pages" required>
             
-            <label for="info"></label>
-            <textarea name="info" id="info" required>
+            <label for="info">Book Info:</label>
+            <textarea name="info" id="info" required placeholder="Book Description"></textarea>
 
-            <input type="submit" value="Add Book"></textarea>
-
+            <button class="submit-button" type="submit" value="Add Book">Add Book</button>
           </form>
-
       </div>
     </div>
 
