@@ -38,7 +38,7 @@ function displayBook() {
 
     const bookTitle = document.createElement('h2');
     bookTitle.innerText = `${book.title}`;
-    bookContainer.classList.add('book-title');
+    bookTitle.classList.add('book-title');
     bookContainer.appendChild(bookTitle);
 
     const bookAuthor = document.createElement('p');
@@ -47,7 +47,7 @@ function displayBook() {
     bookContainer.appendChild(bookAuthor);
 
     const bookPages = document.createElement('p');
-    bookPages.innerText = `${book.pages}`;
+    bookPages.innerText = `${book.pages} pages`;
     bookPages.classList.add('book-pages');
     bookContainer.appendChild(bookPages);
 
@@ -56,24 +56,24 @@ function displayBook() {
     bookInfo.classList.add('book-info');
     bookContainer.appendChild(bookInfo);
 
-    const readStatusSelect = document.createElement('select');
-    readStatusSelect.classList.add('read-status-select');
+    const bookStatus = document.createElement('button');
+    bookStatus.innerText = `${book.readStatus}`;
+    
+    bookStatus.classList.add(book.readStatus.toLowerCase() === 'on-going' ? 'on-going-status' : 'finished-status');
 
-    const statusOptions = ['To read','Reading','Finished'];
-    statusOptions.forEach((status) => {
-      const option = document.createElement('option');
-      option.innerText = `${status}`;
-      option.value = status;
 
-      if (status === book.readStatus) {
-        option.selected = true;
-      }
+    bookStatus.addEventListener('click', () => {
+      book.readStatus = book.readStatus === 'On-going' ? 'Finished' : 'On-going';
+      bookStatus.innerText = book.readStatus;
+      bookStatus.classList.toggle('on-going-status');
+      bookStatus.classList.toggle('finished-status');
+    });
 
-      readStatusSelect.appendChild(option);
 
-    })
 
-    bookContainer.appendChild(readStatusSelect);
+
+    bookContainer.appendChild(bookStatus);
+
     bookShelf.appendChild(bookContainer);
 
   })
@@ -106,9 +106,14 @@ form.addEventListener("submit",(event) => {
   const author = document.querySelector('#author').value;
   const pages = document.querySelector('#pages').value;
   const info = document.querySelector('#info').value;
-  const readStatus = document.querySelector('#read-status').value;
+  const readStatusSelect = document.querySelector('#read-status');
+  const readStatus = readStatusSelect.value; 
 
   addBookToLibrary(title,author,pages,info,readStatus);
+
+
+  displayBook();
+
 
   bookformModal.style.display = 'none';
 
