@@ -139,16 +139,19 @@ h6 {
 
 
 .book-form-content {
-  position: relative;
-  bottom: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  position: fixed;
+  top: 15%;
+  left: 40%;
   background-color: #fefefe;
   border-left: 30px solid green;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  padding-left: 20px;
-  width: 22%; /* Could be more or less, depending on screen size */
+  width: 100%; 
+  max-width: 450px;
   height: 63%;
   border-radius: 8px;
+
 }
 
 
@@ -179,7 +182,11 @@ h6 {
 
 .close-button {
   display: flex;
-  justify-content: end;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  width: 50px;
+  padding-right: 30px;
   font-size: 30px;
   font-weight: bold;
   cursor: pointer;
@@ -189,22 +196,27 @@ h6 {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  padding: 0 30px 0 30px;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 10px;
+  padding-right: 25px;
 
+
+}
+
+label {
+  margin-left: 20px;
 }
 
 textarea {
   height: 200px;
-  width: 100%;
+  width: clamp(250px, 100% , 400px);
   padding: 12px;
   resize: none;
 }
 
 input {
-  width: 100%;
+  width: clamp(250px, 100% , 400px);
   height: 40px;
   padding: 12px;
 }
@@ -220,4 +232,5 @@ button {
 
 .submit-button {
   margin-top: 12px;
+  margin-left: 150px;
 }
