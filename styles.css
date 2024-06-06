@@ -155,8 +155,9 @@ h6 {
 .close-button {
   display: flex;
   justify-content: end;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .book-form {

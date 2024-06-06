@@ -65,17 +65,34 @@ function displayBook() {
 const newBookButton = document.querySelector('.add-book-button');
 const bookformModal = document.querySelector('.book-form-modal');
 const closeButton = document.querySelector('.close-button');
+const form = document.querySelector('.book-form')
 
 
 newBookButton.addEventListener("click", () => {
-
   bookformModal.style.display = 'block';
   
 });
 
 closeButton.addEventListener("click",() => {
-  
+  bookformModal.style.display = 'none';
 
+});
+
+
+form.addEventListener("submit",(event) => {
+  event.preventDefault();
+
+
+  const title = document.querySelector('#title').value;
+  const author = document.querySelector('#author').value;
+  const pages = document.querySelector('#pages').value;
+  const info = document.querySelector('#info').value;
+
+  addBookToLibrary(title,author,pages,info);
+
+  bookformModal.style.display = 'none';
+
+  form.reset();
 })
 
 
