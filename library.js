@@ -42,7 +42,7 @@ function displayBook() {
     bookContainer.appendChild(bookTitle);
 
     const bookAuthor = document.createElement('p');
-    bookAuthor.innerText = `${book.author}`;
+    bookAuthor.innerText = `by ${book.author}`;
     bookAuthor.classList.add('book-author');
     bookContainer.appendChild(bookAuthor);
 
@@ -57,6 +57,7 @@ function displayBook() {
     bookContainer.appendChild(bookInfo);
 
     const bookStatus = document.createElement('button');
+    bookStatus.classList.add('book-button');
     bookStatus.innerText = `${book.readStatus}`;
     
     bookStatus.classList.add(book.readStatus.toLowerCase() === 'on-going' ? 'on-going-status' : 'finished-status');
@@ -122,5 +123,3 @@ form.addEventListener("submit",(event) => {
 
 
 
-
-console.log(myLibrary);
