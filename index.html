@@ -11,16 +11,18 @@
 <body>
   <div class="container">
     <div class="header">
-      <h1>Book Shelf</h1>
-
     </div>
 
     <div class="dashboard">
-      <h1>Book Dashboard</h1>
+      <div class="dashboard-title">
+        <h1>Book Shelf</h1>
+      </div>
       <div class="dashboard-buttons">
         <button class="add-book-button">Add new book</button>
       </div>
     </div>
+
+    <div class="bookshelf-right-side"></div>
 
     <div class="main">
 
@@ -46,13 +48,13 @@
               <input type="number" name="pages" id="pages" required>
             </div>
             
-            <div class="form-group">
+            <div class="form-group-info">
               <label for="info">Description:</label>
-              <textarea name="info" id="info" required placeholder="Book Description"></textarea>
+              <textarea maxlength="390" name="info" id="info" required placeholder="Book Description"></textarea>
             </div>
 
             <div class="form-group-status">
-              <label class="read-status" for="read-status">Read Status:</label>
+              <label class="read-status" for="read-status">Status:</label>
               <div>
                 <select name="read-status" id="read-status">
                   <option value="On-going">On-going</option>

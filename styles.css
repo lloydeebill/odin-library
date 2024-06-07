@@ -59,18 +59,26 @@ h6 {
   justify-content: center;
   align-items: center;
   grid-row: 1 / 2;
-
+  background-color: rgb(173, 82, 30);
+  color: white;
+  border: 5px solid black;
+  border-right: none;
+  border-left: none;
 }
 
 .dashboard {
   display: grid; 
   justify-content: center;
-  background-color: rgb(153, 66, 15);
+  background-color: rgb(187, 91, 36);
+  border: 5px solid black;
+  border-left: none;
   grid-column: 1 / 2;
   grid-row: 1 / 3;
   padding: 10px;
   grid-template-rows: 1fr 6fr;
+  border-bottom: none;
 }
+
 
 .dashboard-buttons {
   display: flex;
@@ -79,6 +87,12 @@ h6 {
   align-items: center;
 }
 
+
+.dashboard-title {
+  display: flex;
+  align-items: center;
+  color: white;
+}
 
 .add-book-button , .reset-shelf-button {
   width: 150px;
@@ -89,10 +103,13 @@ h6 {
 
 .main {
   display: grid;
-  background-color: rgb(242,220,177);
+  background-image: url(images/bg-img.jpg);
+  background-size: cover;
+  grid-column: 2 / 5;
   grid-template-columns: repeat(5, 3fr);
+  grid-template-rows: repeat(auto, 1fr) ;
   column-gap: 30px;
-  row-gap: 30px;
+  row-gap: 30px;  
   padding: 30px;
 
 }
@@ -101,7 +118,7 @@ h6 {
 .book-container{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
   min-width: 300px;
@@ -114,9 +131,19 @@ h6 {
   border-bottom: 12px solid wheat;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   padding: 15px;
-  
 }
 
+.bookshelf-right-side {
+  display: grid;
+  grid-column: 5 / 6;
+  background-color: rgb(173, 82, 30);
+  width: 100px;
+  grid-row: 1 / 3;
+  border: 5px solid black;
+  border-right: none;
+  border-bottom: none;
+
+}
 
 .book-title {
   font-size: 20px;
@@ -167,7 +194,12 @@ h6 {
   grid-template-columns: 2fr 4fr; 
   gap: 15px;
   align-items: center;
-  
+}
+
+.form-group-info  {
+  display: grid;
+  grid-template-columns: 2fr 4fr; 
+  gap: 15px;
 }
 
 .form-group-status {
@@ -233,13 +265,24 @@ input {
 button {
   width: 120px;
   height: 45px;
-  border: 1px solid black;
+  border: 1px solid none;
   border-radius: 10px;
+}
+
+.add-book-button:hover {
+  position: relative;
+  bottom: 0.2%;
+  
 }
 
 .submit-button {
   margin-top: 12px;
   margin-left: 150px;
+}
+
+.submit-button:hover {
+  position: relative;
+  bottom: 0.2%;
 }
 
 .book-button {
@@ -249,5 +292,9 @@ button {
 
 .on-going-status {
   background-color: green;
+  color: white;
+}
+
+.dashboard > h1 {
   color: white;
 }

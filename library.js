@@ -64,7 +64,7 @@ function displayBook() {
 
 
     bookStatus.addEventListener('click', () => {
-      book.readStatus = book.readStatus === 'On-going' ? 'Finished' : 'On-going';
+      book.readStatus = book.readStatus === 'On-going' ? 'Finished' : 'On-going'
       bookStatus.innerText = book.readStatus;
       bookStatus.classList.toggle('on-going-status');
       bookStatus.classList.toggle('finished-status');
