@@ -36,20 +36,28 @@ function displayBook() {
     const bookContainer = document.createElement('div');
     bookContainer.classList.add('book-container');
 
+    const bookTitleAuthorPageContainer = document.createElement('div');
+    bookTitleAuthorPageContainer.classList.add('book-titleAuthorPageContainer');
+
     const bookTitle = document.createElement('h2');
     bookTitle.innerText = `${book.title}`;
     bookTitle.classList.add('book-title');
-    bookContainer.appendChild(bookTitle);
+    bookTitleAuthorPageContainer.appendChild(bookTitle);
 
     const bookAuthor = document.createElement('p');
     bookAuthor.innerText = `by ${book.author}`;
     bookAuthor.classList.add('book-author');
-    bookContainer.appendChild(bookAuthor);
+
+    bookTitleAuthorPageContainer.appendChild(bookAuthor);
+
 
     const bookPages = document.createElement('p');
     bookPages.innerText = `${book.pages} pages`;
     bookPages.classList.add('book-pages');
-    bookContainer.appendChild(bookPages);
+    bookTitleAuthorPageContainer.appendChild(bookPages);
+
+    bookContainer.appendChild(bookTitleAuthorPageContainer);
+
 
     const bookInfo = document.createElement('p');
     bookInfo.innerText = `${book.info}`;
@@ -122,4 +130,20 @@ form.addEventListener("submit",(event) => {
 })
 
 
+
+addBookToLibrary(
+  "1984",
+  "George Orwell",
+  328,
+  "A dystopian social science fiction novel and cautionary tale about the dangers of totalitarianism, written by the English writer George Orwell.",
+  "On-going"
+);
+
+addBookToLibrary(
+  "The Great Gatsby",
+  "F. Scott Fitzgerald",
+  180,
+  "A 1925 novel that follows a cast of characters living in the fictional towns of West Egg and East Egg on prosperous Long Island in the summer of 1922.",
+  "Finished"
+);
 

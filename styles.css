@@ -103,16 +103,16 @@ h6 {
 
 .main {
   display: grid;
-  background-image: url(images/bg-img.jpg);
+  background-image: url(images/bg-img.png);
   background-size: cover;
   grid-column: 2 / 5;
-  grid-template-columns: repeat(5, 3fr);
-  grid-template-rows: repeat(auto, 1fr) ;
+  grid-template-columns: repeat(4, 2fr);
+  grid-template-rows: auto; 
   column-gap: 30px;
   row-gap: 30px;  
   padding: 30px;
-
 }
+
 
 
 .book-container{
@@ -145,8 +145,16 @@ h6 {
 
 }
 
+
+.book-titleAuthorPageContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 .book-title {
-  font-size: 20px;
+  font-size: 1.5rem;
 }
 
 .book-author {
@@ -158,7 +166,7 @@ h6 {
 }
 
 .book-info {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
 }
 
 
@@ -269,21 +277,18 @@ button {
   border-radius: 10px;
 }
 
-.add-book-button:hover {
+button:hover {
   position: relative;
   bottom: 0.2%;
-  
 }
+
+
 
 .submit-button {
   margin-top: 12px;
   margin-left: 150px;
 }
 
-.submit-button:hover {
-  position: relative;
-  bottom: 0.2%;
-}
 
 .book-button {
   width: 80px;
@@ -298,3 +303,4 @@ button {
 .dashboard > h1 {
   color: white;
 }
+
