@@ -1,149 +1,151 @@
 
 
-const myLibrary = [];
-
-class Book {
-  
-  constructor(title,author,pages,info,readStatus){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.info = info;
-    this.readStatus = readStatus;
-  }
-  
-}
-
-// function Book(title,author,pages,info,readStatus){
-//   this.title = title;
-//   this.author = author;
-//   this.pages = pages;
-//   this.info = info;
-//   this.readStatus = readStatus;
-// }
-
-
-function addBookToLibrary(title,author,pages,info,readStatus) {
-  
-  const newBook = new Book(title,author,pages,info,readStatus);
-  myLibrary.push(newBook);
-
-  displayBook();
-
-}
 
 
 
-function displayBook() {
+const Library = (() => {
 
-  //for each book, it will access each property//
-  //display property in a div inside the main content//
-  //change the html on the main content to accomodate for each div books//
-
-  const bookShelf = document.querySelector('.main');
-  bookShelf.innerText = '';
-
-  myLibrary.forEach((book) => {
-
-    const bookContainer = document.createElement('div');
-    bookContainer.classList.add('book-container');
-
-    const bookTitleAuthorPageContainer = document.createElement('div');
-    bookTitleAuthorPageContainer.classList.add('book-titleAuthorPageContainer');
-
-    const bookTitle = document.createElement('h2');
-    bookTitle.innerText = `${book.title}`;
-    bookTitle.classList.add('book-title');
-    bookTitleAuthorPageContainer.appendChild(bookTitle);
-
-    const bookAuthor = document.createElement('p');
-    bookAuthor.innerText = `by ${book.author}`;
-    bookAuthor.classList.add('book-author');
-
-    bookTitleAuthorPageContainer.appendChild(bookAuthor);
+  const myLibrary = [];
+  const newBookButton = document.querySelector('.add-book-button');
+  const bookformModal = document.querySelector('.book-form-modal');
+  const closeButton = document.querySelector('.close-button');
+  const form = document.querySelector('.book-form')
 
 
-    const bookPages = document.createElement('p');
-    bookPages.innerText = `${book.pages} pages`;
-    bookPages.classList.add('book-pages');
-    bookTitleAuthorPageContainer.appendChild(bookPages);
+  class Book {
 
-    bookContainer.appendChild(bookTitleAuthorPageContainer);
-
-
-    const bookInfo = document.createElement('p');
-    bookInfo.innerText = `${book.info}`;
-    bookInfo.classList.add('book-info');
-    bookContainer.appendChild(bookInfo);
-
-    const bookStatus = document.createElement('button');
-    bookStatus.classList.add('book-button');
-    bookStatus.innerText = `${book.readStatus}`;
+    constructor(title,author,pages,info,readStatus){
+      this.title = title;
+      this.author = author;
+      this.pages = pages;
+      this.info = info;
+      this.readStatus = readStatus;
+    }
     
-    bookStatus.classList.add(book.readStatus.toLowerCase() === 'on-going' ? 'on-going-status' : 'finished-status');
+  }
 
+  const addBookToLibrary = (title,author,pages,info,readStatus) => {
 
-    bookStatus.addEventListener('click', () => {
-      book.readStatus = book.readStatus === 'On-going' ? 'Finished' : 'On-going'
-      bookStatus.innerText = book.readStatus;
-      bookStatus.classList.toggle('on-going-status');
-      bookStatus.classList.toggle('finished-status');
-    });
+    const newBook = new Book(title,author,pages,info,readStatus);
+    myLibrary.push(newBook);
+    displayBook();
 
-
-
-
-    bookContainer.appendChild(bookStatus);
-
-    bookShelf.appendChild(bookContainer);
-
-  })
-}
+  };
 
 
 
-const newBookButton = document.querySelector('.add-book-button');
-const bookformModal = document.querySelector('.book-form-modal');
-const closeButton = document.querySelector('.close-button');
-const form = document.querySelector('.book-form')
+  const displayBook = () => {
+
+    const bookShelf = document.querySelector('.main');
+    bookShelf.innerText = '';
+
+    myLibrary.forEach((book) => {
+
+      const bookContainer = document.createElement('div');
+      bookContainer.classList.add('book-container');
+
+      const bookTitleAuthorPageContainer = document.createElement('div');
+      bookTitleAuthorPageContainer.classList.add('book-titleAuthorPageContainer');
+
+      const bookTitle = document.createElement('h2');
+      bookTitle.innerText = `${book.title}`;
+      bookTitle.classList.add('book-title');
+      bookTitleAuthorPageContainer.appendChild(bookTitle);
+
+      const bookAuthor = document.createElement('p');
+      bookAuthor.innerText = `by ${book.author}`;
+      bookAuthor.classList.add('book-author');
+
+      bookTitleAuthorPageContainer.appendChild(bookAuthor);
 
 
-newBookButton.addEventListener("click", () => {
-  bookformModal.style.display = 'block';
+      const bookPages = document.createElement('p');
+      bookPages.innerText = `${book.pages} pages`;
+      bookPages.classList.add('book-pages');
+      bookTitleAuthorPageContainer.appendChild(bookPages);
+
+      bookContainer.appendChild(bookTitleAuthorPageContainer);
+
+
+      const bookInfo = document.createElement('p');
+      bookInfo.innerText = `${book.info}`;
+      bookInfo.classList.add('book-info');
+      bookContainer.appendChild(bookInfo);
+
+      const bookStatus = document.createElement('button');
+      bookStatus.classList.add('book-button');
+      bookStatus.innerText = `${book.readStatus}`;
+      
+      bookStatus.classList.add(book.readStatus.toLowerCase() === 'on-going' ? 'on-going-status' : 'finished-status');
+
+
+      bookStatus.addEventListener('click', () => {
+        book.readStatus = book.readStatus === 'On-going' ? 'Finished' : 'On-going'
+        bookStatus.innerText = book.readStatus;
+        bookStatus.classList.toggle('on-going-status');
+        bookStatus.classList.toggle('finished-status');
+      });
+
+
+
+      bookContainer.appendChild(bookStatus);
+      bookShelf.appendChild(bookContainer);
+
+    })};
   
-});
 
-closeButton.addEventListener("click",() => {
-  bookformModal.style.display = 'none';
+  
+  
 
-});
+  newBookButton.addEventListener("click", () => {
+      bookformModal.style.display = 'block';
+    
+      });
+    
+  closeButton.addEventListener("click",() => {
+    bookformModal.style.display = 'none';
+  
+    });
+  
+  form.addEventListener("submit",(event) => {
+    event.preventDefault();
+  
+  
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const pages = document.querySelector('#pages').value;
+    const info = document.querySelector('#info').value;
+    const readStatusSelect = document.querySelector('#read-status');
+    const readStatus = readStatusSelect.value; 
+  
+    addBookToLibrary(title,author,pages,info,readStatus);
+  
+  
+    displayBook();
+  
+  
+    bookformModal.style.display = 'none';
+  
+    form.reset();
+    });
+  
 
 
-form.addEventListener("submit",(event) => {
-  event.preventDefault();
+  return {addBookToLibrary,displayBook}
 
+  
 
-  const title = document.querySelector('#title').value;
-  const author = document.querySelector('#author').value;
-  const pages = document.querySelector('#pages').value;
-  const info = document.querySelector('#info').value;
-  const readStatusSelect = document.querySelector('#read-status');
-  const readStatus = readStatusSelect.value; 
+  
 
-  addBookToLibrary(title,author,pages,info,readStatus);
-
-
-  displayBook();
-
-
-  bookformModal.style.display = 'none';
-
-  form.reset();
-})
+})();
 
 
 
-addBookToLibrary(
+
+
+
+
+Library.addBookToLibrary(
   "1984",
   "George Orwell",
   328,
@@ -151,7 +153,7 @@ addBookToLibrary(
   "On-going"
 );
 
-addBookToLibrary(
+Library.addBookToLibrary(
   "The Great Gatsby",
   "F. Scott Fitzgerald",
   180,
