@@ -1,51 +1,38 @@
-
-
-
-
-
 const Library = (() => {
-
   const myLibrary = [];
   const newBookButton = document.querySelector('.add-book-button');
   const bookformModal = document.querySelector('.book-form-modal');
   const closeButton = document.querySelector('.close-button');
-  const form = document.querySelector('.book-form')
-
+  const form = document.querySelector('.book-form');
 
   class Book {
-
-    constructor(title,author,pages,info,readStatus){
+    constructor(title, author, pages, info, readStatus) {
       this.title = title;
       this.author = author;
       this.pages = pages;
       this.info = info;
       this.readStatus = readStatus;
     }
-    
   }
 
-  const addBookToLibrary = (title,author,pages,info,readStatus) => {
-
-    const newBook = new Book(title,author,pages,info,readStatus);
+  const addBookToLibrary = (title, author, pages, info, readStatus) => {
+    const newBook = new Book(title, author, pages, info, readStatus);
     myLibrary.push(newBook);
     displayBook();
-
   };
 
-
-
   const displayBook = () => {
-
     const bookShelf = document.querySelector('.main');
     bookShelf.innerText = '';
 
     myLibrary.forEach((book) => {
-
       const bookContainer = document.createElement('div');
       bookContainer.classList.add('book-container');
 
       const bookTitleAuthorPageContainer = document.createElement('div');
-      bookTitleAuthorPageContainer.classList.add('book-titleAuthorPageContainer');
+      bookTitleAuthorPageContainer.classList.add(
+        'book-titleAuthorPageContainer'
+      );
 
       const bookTitle = document.createElement('h2');
       bookTitle.innerText = `${book.title}`;
@@ -58,14 +45,12 @@ const Library = (() => {
 
       bookTitleAuthorPageContainer.appendChild(bookAuthor);
 
-
       const bookPages = document.createElement('p');
       bookPages.innerText = `${book.pages} pages`;
       bookPages.classList.add('book-pages');
       bookTitleAuthorPageContainer.appendChild(bookPages);
 
       bookContainer.appendChild(bookTitleAuthorPageContainer);
-
 
       const bookInfo = document.createElement('p');
       bookInfo.innerText = `${book.info}`;
@@ -75,89 +60,68 @@ const Library = (() => {
       const bookStatus = document.createElement('button');
       bookStatus.classList.add('book-button');
       bookStatus.innerText = `${book.readStatus}`;
-      
-      bookStatus.classList.add(book.readStatus.toLowerCase() === 'on-going' ? 'on-going-status' : 'finished-status');
 
+      bookStatus.classList.add(
+        book.readStatus.toLowerCase() === 'on-going'
+          ? 'on-going-status'
+          : 'finished-status'
+      );
 
       bookStatus.addEventListener('click', () => {
-        book.readStatus = book.readStatus === 'On-going' ? 'Finished' : 'On-going'
+        book.readStatus =
+          book.readStatus === 'On-going' ? 'Finished' : 'On-going';
         bookStatus.innerText = book.readStatus;
         bookStatus.classList.toggle('on-going-status');
         bookStatus.classList.toggle('finished-status');
       });
 
-
-
       bookContainer.appendChild(bookStatus);
       bookShelf.appendChild(bookContainer);
-
-    })};
-  
-
-  
-  
-
-  newBookButton.addEventListener("click", () => {
-      bookformModal.style.display = 'block';
-    
-      });
-    
-  closeButton.addEventListener("click",() => {
-    bookformModal.style.display = 'none';
-  
     });
-  
-  form.addEventListener("submit",(event) => {
+  };
+
+  newBookButton.addEventListener('click', () => {
+    bookformModal.style.display = 'block';
+  });
+
+  closeButton.addEventListener('click', () => {
+    bookformModal.style.display = 'none';
+  });
+
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
-  
-  
+
     const title = document.querySelector('#title').value;
     const author = document.querySelector('#author').value;
     const pages = document.querySelector('#pages').value;
     const info = document.querySelector('#info').value;
     const readStatusSelect = document.querySelector('#read-status');
-    const readStatus = readStatusSelect.value; 
-  
-    addBookToLibrary(title,author,pages,info,readStatus);
-  
-  
+    const readStatus = readStatusSelect.value;
+
+    addBookToLibrary(title, author, pages, info, readStatus);
+
     displayBook();
-  
-  
+
     bookformModal.style.display = 'none';
-  
+
     form.reset();
-    });
-  
+  });
 
-
-  return {addBookToLibrary,displayBook}
-
-  
-
-  
-
+  return { addBookToLibrary, displayBook };
 })();
 
-
-
-
-
-
-
 Library.addBookToLibrary(
-  "1984",
-  "George Orwell",
+  '1984',
+  'George Orwell',
   328,
-  "A dystopian social science fiction novel and cautionary tale about the dangers of totalitarianism, written by the English writer George Orwell.",
-  "On-going"
+  'A dystopian social science fiction novel and cautionary tale about the dangers of totalitarianism, written by the English writer George Orwell.',
+  'On-going'
 );
 
 Library.addBookToLibrary(
-  "The Great Gatsby",
-  "F. Scott Fitzgerald",
+  'The Great Gatsby',
+  'F. Scott Fitzgerald',
   180,
-  "A 1925 novel that follows a cast of characters living in the fictional towns of West Egg and East Egg on prosperous Long Island in the summer of 1922.",
-  "Finished"
+  'A 1925 novel that follows a cast of characters living in the fictional towns of West Egg and East Egg on prosperous Long Island in the summer of 1922.',
+  'Finished'
 );
-

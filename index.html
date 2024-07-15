@@ -1,57 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loidee Library</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loidee Library</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
+  <body>
+    <div class="container">
+      <div class="header"></div>
 
-<body>
-  <div class="container">
-    <div class="header">
-    </div>
-
-    <div class="dashboard">
-      <div class="dashboard-title">
-        <h1>Book Shelf</h1>
+      <div class="dashboard">
+        <div class="dashboard-title">
+          <h1>Book Shelf</h1>
+        </div>
+        <div class="dashboard-buttons">
+          <button class="add-book-button">Add new book</button>
+        </div>
       </div>
-      <div class="dashboard-buttons">
-        <button class="add-book-button">Add new book</button>
-      </div>
-    </div>
 
-    <div class="bookshelf-right-side">
-    </div>
+      <div class="bookshelf-right-side"></div>
 
-    <div class="main">
- 
-    </div>
+      <div class="main"></div>
 
-
-    <div class="book-form-modal">
-      <div class="book-form-content">
-        <div class="close-button"><span>&times;</span> </div>
+      <div class="book-form-modal">
+        <div class="book-form-content">
+          <div class="close-button"><span>&times;</span></div>
           <form action="" id="bookForm" class="book-form">
             <div class="form-group">
               <label for="title">Title:</label>
-              <input type="text" name="title" id="title" required>
+              <input type="text" name="title" id="title" required />
             </div>
-            
+
             <div class="form-group">
               <label for="author">Author:</label>
-              <input type="text" name="author" id="author" required>
+              <input type="text" name="author" id="author" required />
             </div>
-            
-            <div class="form-group">              
+
+            <div class="form-group">
               <label for="pages">Pages:</label>
-              <input type="number" name="pages" id="pages" required>
+              <input type="number" name="pages" id="pages" min="50" required />
             </div>
-            
+
             <div class="form-group-info">
               <label for="info">Description:</label>
-              <textarea maxlength="200" name="info" id="info" required placeholder="Book Description"></textarea>
+              <textarea
+                maxlength="200"
+                name="info"
+                id="info"
+                required
+                placeholder="Book Description"
+              ></textarea>
             </div>
 
             <div class="form-group-status">
@@ -66,13 +66,9 @@
 
             <button class="submit-button" type="submit">Add Book</button>
           </form>
+        </div>
       </div>
     </div>
-
-
-
-  </div>
-  <script src="library.js"></script>
-</body>
-
+    <script src="library.js"></script>
+  </body>
 </html>
